@@ -1,10 +1,10 @@
-name: "Hello Actions"
-description: "Greet someone"
-author: "octocat@github.com"
+name: "Notebook actions"
+description: "Convert Jupyter notebooks to html"
+author: "Travis Ormsby"
 
 inputs:
-  MY_NAME:
-    description: "Who to greet"
+  NOTEBOOKS:
+    description: "Notebooks to convert"
     required: true
     default: "World"
 

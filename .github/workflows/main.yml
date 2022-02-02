@@ -1,14 +1,14 @@
-name: A workflow for my Hello World file
+name: A workflow to convert Jupyter Notebooks to html
 on:
   push:
     paths:
       - '**.ipynb'
 jobs:
   build:
-    name: Hello world action
+    name: nbconvert action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: ./action-a
         with:
-          MY_NAME: "Mona"
+          NOTEBOOKS: "Lesson1.ipynb"
