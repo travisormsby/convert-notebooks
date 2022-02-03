@@ -4,7 +4,7 @@ author: "Travis Ormsby"
 
 inputs:
   NOTEBOOKS:
-    description: "Notebooks to convert"
+    description: "Space delimited list of notebook files to convert"
     required: true
     default: "World"
 

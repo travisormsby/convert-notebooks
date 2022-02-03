@@ -1,3 +1,7 @@
 #!/bin/sh -l
 
-sh -c "echo Hello world my name is $INPUT_NOTEBOOKS"
+
+for NOTEBOOK in $INPUT_NOTEBOOKS
+do
+  echo Hello world my name is $NOTEBOOK
+done
