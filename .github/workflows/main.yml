@@ -21,10 +21,11 @@ jobs:
       - id: nbconvert
         run: |
           OUTPUT=""
-          for changed_file in ${{ steps.files.outputs.all }}; do
-            if [[ $changed_file == *.ipynb ]]; then
-              jupyter nbconvert --to html $changed_file
-              OUTPUT+="${changed_file} "
+          for CHANGED_FILE in ${{ steps.files.outputs.all }}; do
+            if [[ $CHANGED_FILE == *.ipynb ]]; then
+              jupyter nbconvert --to html $CHANGED_FILE
+              CHANGED_HTML = "${CHANGED_FILE%.*}.html"
+              OUTPUT+="${CHANGED_HTML} "
             fi
           done
           echo "::set-output name=changed-ipynb::${OUTPUT}"
