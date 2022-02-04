@@ -14,3 +14,8 @@ jobs:
       - uses: ./action-a
         with:
           CHANGED_FILES: ${{ steps.files.outputs.all }}
+      - uses: EndBug/add-and-commit@v7
+        with:
+          author_name: html update bot
+          message: "Update html"
+          add: "test1.html"
