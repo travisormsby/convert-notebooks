@@ -13,4 +13,4 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - uses: ./action-a
         with:
-          NOTEBOOKS: ${{ steps.files.outputs.all }}
+          CHANGED_FILES: ${{ steps.files.outputs.all }}

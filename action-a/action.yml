@@ -3,7 +3,7 @@ description: "Convert Jupyter notebooks to html"
 author: "Travis Ormsby"
 
 inputs:
-  CHANGED_FILE:
+  CHANGED_FILES:
     description: "Space delimited list of changed files in the commit"
     required: true
     default: "World"
