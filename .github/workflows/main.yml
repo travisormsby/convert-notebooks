@@ -24,7 +24,7 @@ jobs:
           for CHANGED_FILE in ${{ steps.files.outputs.all }}; do
             if [[ $CHANGED_FILE == *.ipynb ]]; then
               jupyter nbconvert --to html $CHANGED_FILE
-              CHANGED_HTML = "${CHANGED_FILE%.*}.html"
+              CHANGED_HTML="${CHANGED_FILE%.*}.html"
               OUTPUT+="${CHANGED_HTML} "
             fi
           done
