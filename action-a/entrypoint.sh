@@ -1,11 +1,9 @@
 #!/bin/sh -l
 
+echo $INPUT_CHANGED_FILES
 
-for NOTEBOOK in $INPUT_NOTEBOOKS
-do
-  echo Hello world my name is $NOTEBOOK
+for FILE in $INPUT_CHANGED_FILES; do
+  if [[ $FILE == *.ipynb ]]; then
+    echo Hello world my name is $FILE
+  fi
 done
-
-echo $GITHUB_WORKSPACE
-WPATH=$(ls -la $GITHUB_WORKSPACE)
-echo $WPATH
