@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - id: files
+        uses: jitterbit/get-changed-files@v1
       - uses: ./action-a
         with:
-          NOTEBOOKS: "Lesson1.ipynb Lesson2.ipynb"
+          NOTEBOOKS: ${{ steps.files.outputs.all }}
