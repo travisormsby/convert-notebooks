@@ -1,4 +1,5 @@
 name: A workflow to convert Jupyter Notebooks to html
+# Trigger whenever a Jupyter Notebook file is pushed to the repo
 on:
   push:
     paths:
@@ -10,15 +11,19 @@ jobs:
     outputs: 
       output1: ${{ steps.nbconvert.outputs.changed-ipynb}}
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out repo
+        uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.7'
-      - run: python -m pip install jupyter nbconvert nbformat
-      - id: files
+      - name: Install dependancies
+        run: python -m pip install jupyter nbconvert nbformat
+      - name: Get changed files
+        id: files
         uses: jitterbit/get-changed-files@v1
-      - id: nbconvert
+      - name: Convert notebooks
+        id: nbconvert
         run: |
           OUTPUT=""
           for CHANGED_FILE in ${{ steps.files.outputs.all }}; do
@@ -31,8 +36,8 @@ jobs:
           echo "::set-output name=changed-ipynb::${OUTPUT}"
           echo $OUTPUT
           echo ${{ steps.nbconvert.outputs.changed-ipynb}}
-      - uses: EndBug/add-and-commit@v7
+      - name: Add and commit converted notebooks
+        uses: EndBug/add-and-commit@v7
         with:
-          author_name: "html update bot"
           message: "Update html"
           add: ${{ steps.nbconvert.outputs.changed-ipynb}}
