@@ -19,11 +19,11 @@ jobs:
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             if [[ $changed_file == *.ipynb ]]; then
-              jupyter nbconvert --template=collapsible_headings --to html_ch $changed_file
+              jupyter nbconvert --to html $changed_file
             fi
           done
       - uses: EndBug/add-and-commit@v7
         with:
           author_name: "html update bot"
           message: "Update html"
-          add: "test1.html"
+          add: "test.html"
