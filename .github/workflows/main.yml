@@ -36,6 +36,10 @@ jobs:
           echo "::set-output name=changed-ipynb::${OUTPUT}"
           echo $OUTPUT
           echo ${{ steps.nbconvert.outputs.changed-ipynb}}
+      - name: Convert notebooks with Docker
+        uses: ./action-a
+        with:
+            CHANGED_FILES: ${{ steps.files.outputs.all }}
       - name: Add and commit converted notebooks
         uses: EndBug/add-and-commit@v7
         with:
