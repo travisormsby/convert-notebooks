@@ -6,12 +6,10 @@ inputs:
   CHANGED_FILES:
     description: "Space delimited list of changed files in the commit"
     required: true
-    default: "World"
 
 outputs:
   CHANGED_HTML:
     description: "Space delimited list of updated html files from notebook converstion"
-    required: true
     value: ${{ steps.nbconvert.outputs.CHANGED_HTML}}
 
 
