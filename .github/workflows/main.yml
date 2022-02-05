@@ -16,7 +16,7 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - name: Convert notebooks with Docker
         id: nbconvert
-        uses: ./convert-notebooks
+        uses: ./
         with:
             files_to_convert: ${{ steps.files.outputs.added_modified }}
       - name: Add and commit converted notebooks
