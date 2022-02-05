@@ -46,4 +46,4 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           message: "Update html"
-          add: ${{ steps.nbconvert.outputs.CHANGED_HTM L}}
+          add: ${{ steps.nbconvert.outputs.CHANGED_HTML }}
