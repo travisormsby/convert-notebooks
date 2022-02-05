@@ -16,11 +16,11 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - name: Convert notebooks with Docker
         id: nbconvert
-        uses: ./action-a
+        uses: ./
         with:
-            CHANGED_FILES: ${{ steps.files.outputs.all }}
+            files_to_convert: ${{ steps.files.outputs.added_modified }}
       - name: Add and commit converted notebooks
         uses: EndBug/add-and-commit@v7
         with:
           message: "Update html"
-          add: ${{ steps.nbconvert.outputs.CHANGED_HTML }}
+          add: ${{ steps.nbconvert.outputs.converted_notebooks }}
