@@ -8,8 +8,8 @@ jobs:
   build:
     name: nbconvert action
     runs-on: ubuntu-latest
-    outputs: 
-      output1: ${{ steps.nbconvert.outputs.CHANGED_HTML}}
+    # outputs: 
+      # output1: ${{ steps.nbconvert.outputs.CHANGED_HTML }}
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
@@ -26,16 +26,16 @@ jobs:
       #   id: nbconvert
       #   run: |
       #     OUTPUT=""
-      #     for CHANGED_FILE in ${{ steps.files.outputs.all }}; do
-      #       if [[ $CHANGED_FILE == *.ipynb ]]; then
-      #         jupyter nbconvert --to html --no-prompt $CHANGED_FILE
-      #         CHANGED_HTML="${CHANGED_FILE%.*}.html"
-      #         OUTPUT+="${CHANGED_HTML} "
+      #     for FILE in ${{ steps.files.outputs.all }}; do
+      #       if [[ $FILE == *.ipynb ]]; then
+      #         jupyter nbconvert --to html --no-prompt $FILE
+      #         HTML="${FILE%.*}.html"
+      #         OUTPUT+="${HTML} "
       #       fi
       #     done
-      #     echo "::set-output name=changed-ipynb::${OUTPUT}"
+      #     echo "::set-output name=CHANGED_HTML::${OUTPUT}"
       #     echo $OUTPUT
-      #     echo ${{ steps.nbconvert.outputs.changed-ipynb}}
+      #     echo ${{ steps.nbconvert.outputs.CHANGED_HTML }}
       - name: Convert notebooks with Docker
         id: nbconvert
         uses: ./action-a
