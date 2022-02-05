@@ -13,29 +13,29 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.7'
-      - name: Install dependancies
-        run: python -m pip install jupyter nbconvert nbformat
+      # - name: Set up Python
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: '3.7'
+      # - name: Install dependancies
+      #   run: python -m pip install jupyter nbconvert nbformat
       - name: Get changed files
         id: files
         uses: jitterbit/get-changed-files@v1
-      - name: Convert notebooks
-        id: nbconvert
-        run: |
-          OUTPUT=""
-          for CHANGED_FILE in ${{ steps.files.outputs.all }}; do
-            if [[ $CHANGED_FILE == *.ipynb ]]; then
-              jupyter nbconvert --to html --no-prompt $CHANGED_FILE
-              CHANGED_HTML="${CHANGED_FILE%.*}.html"
-              OUTPUT+="${CHANGED_HTML} "
-            fi
-          done
-          echo "::set-output name=changed-ipynb::${OUTPUT}"
-          echo $OUTPUT
-          echo ${{ steps.nbconvert.outputs.changed-ipynb}}
+      # - name: Convert notebooks
+      #   id: nbconvert
+      #   run: |
+      #     OUTPUT=""
+      #     for CHANGED_FILE in ${{ steps.files.outputs.all }}; do
+      #       if [[ $CHANGED_FILE == *.ipynb ]]; then
+      #         jupyter nbconvert --to html --no-prompt $CHANGED_FILE
+      #         CHANGED_HTML="${CHANGED_FILE%.*}.html"
+      #         OUTPUT+="${CHANGED_HTML} "
+      #       fi
+      #     done
+      #     echo "::set-output name=changed-ipynb::${OUTPUT}"
+      #     echo $OUTPUT
+      #     echo ${{ steps.nbconvert.outputs.changed-ipynb}}
       - name: Convert notebooks with Docker
         uses: ./action-a
         with:
