@@ -10,7 +10,7 @@ inputs:
 outputs:
   CHANGED_HTML:
     description: "Space delimited list of updated html files from notebook converstion"
-    value: ${{ steps.nbconvert.outputs.CHANGED_HTML}}
+    value: ${{ steps.nbconvert.outputs.CHANGED_HTML }}
 
 
 runs:

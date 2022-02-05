@@ -41,9 +41,9 @@ jobs:
         uses: ./action-a
         with:
             CHANGED_FILES: ${{ steps.files.outputs.all }}
-      - run: echo ${{ steps.nbconvert.outputs.changed-ipynb}}
+      - run: echo ${{ steps.nbconvert.outputs.CHANGED_HTML }}
       - name: Add and commit converted notebooks
         uses: EndBug/add-and-commit@v7
         with:
           message: "Update html"
-          add: ${{ steps.nbconvert.outputs.changed-ipynb}}
+          add: ${{ steps.nbconvert.outputs.CHANGED_HTM L}}
