@@ -9,4 +9,4 @@ for FILE in $INPUT_CHANGED_FILES; do
   fi
 done
 
-# echo "::set-output name=CHANGED_HTML::${OUTPUT_CHANGED_HTML}"
+echo "::set-output name=CHANGED_HTML::${OUTPUT_CHANGED_HTML}"
