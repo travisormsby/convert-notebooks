@@ -1,0 +1,20 @@
+name: "Convert Notebooks"
+description: "Convert Jupyter notebooks to html"
+author: "Travis Ormsby"
+
+inputs:
+  files_to_convert:
+    description: "Space delimited list of files. Any .ipynb files in the list will be converted."
+    required: true
+
+outputs:
+  converted_notebooks:
+    description: "Space delimited list of updated html files"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  icon: "edit"
+  color: "orange"
