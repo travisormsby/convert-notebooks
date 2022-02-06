@@ -17,3 +17,7 @@ Converts Jupyter Notebook files to static html
 
 - The action defines a single output: converted_notebooks
 - This output is a string of space-delimited file paths of the converted html files, relative to the repo root
+
+## Limitations
+- Will fail if any input file names have spaces
+- Will fail if the notebooks are not in the repo root
