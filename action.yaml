@@ -9,7 +9,7 @@ inputs:
 
 outputs:
   converted_notebooks:
-    description: "Space delimited list of updated html files"
+    description: "Space delimited list of updated html file paths"
 
 runs:
   using: "docker"
