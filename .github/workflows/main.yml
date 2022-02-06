@@ -15,13 +15,13 @@ jobs:
         id: files
         uses: jitterbit/get-changed-files@v1
       - name: Convert notebooks with Docker
-        if: contains(${{ steps.files.outputs.added_modified }}, '.ipynb')
+        if: ${{ contains(steps.files.outputs.added_modified, '.ipynb') }}
         id: nbconvert
         uses: ./
         with:
             files_to_convert: ${{ steps.files.outputs.added_modified }}
       - name: Add and commit converted notebooks
-        if: ${{ steps.nbconvert.outputs.converted_notebooks }} != ''
+        if: ${{ contains(steps.files.outputs.added_modified, '.ipynb') }}
         uses: EndBug/add-and-commit@v7
         with:
           message: "Update html"
